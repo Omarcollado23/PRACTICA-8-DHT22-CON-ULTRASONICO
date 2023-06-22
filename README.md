@@ -4,7 +4,7 @@ Este repositorio muestra como podemos programar una ESP32 con SR- y ocupando la 
 
 ### Descripción
 
-La ```Esp32``` la utilizamos en un entorno de adquision de datos, lo cual en esta practica ocuparemos un sensor (```HC-SR04```) para medir la distancia. Cabe aclarar que esta practica se usara en el simulador llamado [WOKWI](https://https://wokwi.com/).
+La ```Esp32``` la utilizamos en un entorno de adquision de datos, lo cual en esta practica ocuparemos un sensor (```HC-SR04```) para medir la distancia y un sensor ```DHT22``` para medir de temperatura y humedad. Cabe aclarar que esta practica se usara en el simulador llamado [WOKWI](https://https://wokwi.com/). y ```localhost:1880```
 
 
 ## Material Necesario
@@ -22,21 +22,49 @@ Para realizar esta practica necesitas lo siguiente
 
 ### Requisitos previos
 
-Para poder usar este repositorio necesitas entrar a la plataforma [WOKWI](https://https://wokwi.com/) y NODE-red (http://localhost:1880/#flow/214928d358894902) para esta ultima necesitamos instalar un programa en nuestra computadora como se muestra en la siguientes imagenes. 
-Y descargamos el 18.16.0 LTS
+# Instalar Node-Red
 
-![](https://github.com/Omarcollado23/PRACTICA-7-CON-ULTRASONICO/blob/main/DESCARGA%201%20NODE.png?raw=true)
+## Pasos para instalación
 
-Despues nos vamos al inicio y buscamos ```cmd``` cmo se muestra en la imagen y damos clic en "ejecutar como administrador"
+1. Entrar a la pagina  https://nodejs.org/en
+2. Descargar el archivo **18.16.0 LTS** como se muestra en la siguente imagen.
 
+![](https://github.com/DiegoJm10/Node-red-instalcacion/blob/main/Node.js%20-%20Google%20Chrome%2014_06_2023%2005_04_00%20p.%20m..png?raw=true)
+
+3. Abrir el archivo e instalar el programa [node.js](https://nodejs.org/en)
+
+
+4. Nos vamos al inicio y buscamos ```cmd``` cOmo se muestra en la imagen y damos clic en "ejecutar como administrador" y escribir lo siguente:
 ![](https://github.com/Omarcollado23/PRACTICA-7-CON-ULTRASONICO/blob/main/CMD.png?raw=true)
 
-Posteriormente nos aparecera lo siguiente y pondremo el siguiente codigo ```npm install -g --unsafe-perm node-red``` 
-
+```
+npm install -g --unsafe-perm node-red
+```
 ![](https://github.com/Omarcollado23/PRACTICA-7-CON-ULTRASONICO/blob/main/npm%20instal.png?raw=true)
 
-Y despues para poder comenzar metemos el códigp ```node-red``` 
-![](https://github.com/Omarcollado23/PRACTICA-7-CON-ULTRASONICO/blob/main/node-red.png?raw=true)
+5. Despues comprobamos que funcione node-red con el siguente codigo: (con este mismo codigo podemos arrancar el programa siempre que lo necesitemos)
+
+```
+node-red
+```
+ ![](https://github.com/Omarcollado23/PRACTICA-7-CON-ULTRASONICO/blob/main/node-red.png?raw=true)
+
+
+ ## Arranque de programa
+
+Para abrir la aplicación nos vamos algun explorador y colocamos el siguente link:    ```localhost:1880```
+
+
+## Instalación de Dashboard
+
+1. Abrimos la pestaña de opciones y elegimos ```Manage palette``` 
+
+![](https://github.com/DiegoJm10/Node-red-instalcacion/blob/main/Node.js%20-%20Google%20Chrome%2014_06_2023%2005_06_26%20p.%20m..png?raw=true)
+
+2. Seleccionamos **Install* y buscamos ```node-red-dashboard```.
+3. Seleccionamos ```node-red-dashboard```.
+![](https://github.com/DiegoJm10/Node-red-instalcacion/blob/main/Node.js%20-%20Google%20Chrome%2014_06_2023%2005_06_17%20p.%20m..png?raw=true)
+
 
 ### Instrucciones de preparación de entorno 
 
@@ -210,9 +238,9 @@ TempAndHumidity  data = dhtSensor.getTempAndHumidity();
 
 ![](https://github.com/Omarcollado23/PRACTICA-7-CON-ULTRASONICO/blob/main/libreria.png?raw=true)
 
-3. Hacemos las conexiones el **ESP32** del sensor **HC-SR04**n omo se muestra en la siguiente imagen
+3. Hacemos las conexiones el **ESP32** del sensor **HC-SR04**  y el **DHT22** como se muestra en la siguiente imagen
 
-![](https://github.com/Omarcollado23/PRACTICA-7-CON-ULTRASONICO/blob/main/conexion.png?raw=true)
+![]()
 
 ### Instrucciónes de operación
 
@@ -220,17 +248,76 @@ TempAndHumidity  data = dhtSensor.getTempAndHumidity();
 2. Visualizar los datos en el monitor serial.
 3. Colocar la distancia dando *doble click* al sensor **HC-SR04** 
 
-### Instrucciones para hacer la conexión con NODE-RED
+### Despues de que el programa corrio bien sin errores, ahora nos vamos a las parte de conexion con NODE-RED
+
+# Instrucciones para hacer la conexión con NODE-RED
 
 Abrimos una nueva pestaña en el navegador que utilizas e insertamos en la barra de navegación el suiguiente link (localhost:1880)
 
+![](https://github.com/Omarcollado23/PRACTICA-7-CON-ULTRASONICO/blob/main/localhost1.png?raw=true)
+
+1. Colocar bloque ```mqqtt in```.
+
+![](https://github.com/DiegoJm10/dht22-con-node-red/blob/main/bloquemqtt.png?raw=true)
+
+2. Configurar el bloque con el puerto mqtt con el ip ```44.195.202.69:1883``` como se muestra en la imagen.
+
+![](https://github.com/Omarcollado23/PRACTICA-7-CON-ULTRASONICO/blob/main/%23servidor.png?raw=true)
+
+3. Colocar el bloque json y configurarlo como se muestra en la imagen.
+
+![](https://github.com/DiegoJm10/dht22-con-node-red/blob/main/JSON.png?raw=true)
+
+Colocamos tres bloques function y lo configuramos con el siguente codigo.
+
+```
+msg.payload = msg.payload.TEMPERATURA;
+msg.topic = "TEMPERATURA";
+return msg;
+```
+
+![](https://github.com/Omarcollado23/PRACTICA-6-DHT22-CON-NODE-RED/blob/main/conf%20temp.png?raw=true)
+
+
+```
+msg.payload = msg.payload.HUMEDAD;
+msg.topic = "HUMEDAD";
+return msg;
+```
+
+![](https://github.com/Omarcollado23/PRACTICA-6-DHT22-CON-NODE-RED/blob/main/conf%20hum.png?raw=true)
+
+```
+msg.payload = msg.payload.DISTANCIA;
+msg.topic = "DISTANCIA";
+return msg;
+```
+![](https://github.com/Omarcollado23/PRACTICA-7-CON-ULTRASONICO/blob/main/code%20distancia.png?raw=true)
+
+5. Colocamos los bloques de chart y gauge.
+
+![](https://github.com/Omarcollado23/PRACTICA-6-DHT22-CON-NODE-RED/blob/main/conf%20gauge%20tem.png?raw=true)
+
+
+![](https://github.com/Omarcollado23/PRACTICA-6-DHT22-CON-NODE-RED/blob/main/conf%20gauge%20tem.png?raw=true)
+
+![](https://github.com/Omarcollado23/PRACTICA-6-DHT22-CON-NODE-RED/blob/main/conf%20guage%20hum.png?raw=true)
+
+![](https://github.com/Omarcollado23/PRACTICA-6-DHT22-CON-NODE-RED/blob/main/conf%20guage%20hum.png?raw=true)
+
+
 ## Resultados
 
-Cuando haya funcionado, la información obtenida del sensor **DHT22** y **HC-SR04** se arrojara en el LCD como se muestra en las siguentes imagenes.
+Cuando haya funcionado, la información obtenida del sensor **DHT22** Y **HC-SR04** los mandara a servidor cuando se haga conexión y los observaremos por medio del dashboard. 
 
-![](https://github.com/Omarcollado23/PRACTICA-5DHT-LCD-ULTRASONICO/blob/main/datos%20distance.jpg?raw=true)
-![](https://github.com/Omarcollado23/PRACTICA-5DHT-LCD-ULTRASONICO/blob/main/datos%202.jpg?raw=true)
-![](https://github.com/Omarcollado23/PRACTICA-5DHT-LCD-ULTRASONICO/blob/main/datos%20hum-temp.jpg?raw=true)
+Damos Clic en el boton donde dice ```Deploy``` para cargar el programa y despues oprimos la pestaña con una flechita señalnado hacia arriba en diagonal, como se muestra en la imagen. 
+
+![](https://github.com/Omarcollado23/PRACTICA-7-CON-ULTRASONICO/blob/main/deploy.png?raw=true)
+
+Y veremos los resultados que manda el sensor al servidor como se muestra en la imagen.
+
+![]()
+![]()
 
 
 
