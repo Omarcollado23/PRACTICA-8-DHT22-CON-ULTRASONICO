@@ -234,13 +234,13 @@ TempAndHumidity  data = dhtSensor.getTempAndHumidity();
 }
 
 ```
-2. Instalamos la libreria de **DHT sensor library for ESPx** y **ArdiunoJson** y **PubSubClient** como se muestra en la siguente imagen, dando clic en (Library Manager) y despues en el simbolo de (+)
+2. Instalamos la libreria de **DHT sensor library for ESPx**, **ArdiunoJson** y **PubSubClient** como se muestra en la siguente imagen, dando clic en (Library Manager) y despues en el simbolo de (+)
 
 ![](https://github.com/Omarcollado23/PRACTICA-7-CON-ULTRASONICO/blob/main/libreria.png?raw=true)
 
 3. Hacemos las conexiones el **ESP32** del sensor **HC-SR04**  y el **DHT22** como se muestra en la siguiente imagen
 
-![]()
+![](https://github.com/Omarcollado23/PRACTICA-8-DHT22-CON-ULTRASONICO/blob/main/CONEXIONES.png?raw=true)
 
 ### Instrucciónes de operación
 
@@ -256,7 +256,7 @@ Abrimos una nueva pestaña en el navegador que utilizas e insertamos en la barra
 
 ![](https://github.com/Omarcollado23/PRACTICA-7-CON-ULTRASONICO/blob/main/localhost1.png?raw=true)
 
-1. Colocar bloque ```mqqtt in```.
+1. Colocamos bloque ```mqqtt in```.
 
 ![](https://github.com/DiegoJm10/dht22-con-node-red/blob/main/bloquemqtt.png?raw=true)
 
@@ -295,31 +295,34 @@ return msg;
 ![](https://github.com/Omarcollado23/PRACTICA-7-CON-ULTRASONICO/blob/main/code%20distancia.png?raw=true)
 
 5. Colocamos los bloques de chart y gauge.
+Los configuramos de la siguiente manera como se muestra en las siguientes imagenes.
 
-![](https://github.com/Omarcollado23/PRACTICA-6-DHT22-CON-NODE-RED/blob/main/conf%20gauge%20tem.png?raw=true)
+![](https://github.com/Omarcollado23/PRACTICA-8-DHT22-CON-ULTRASONICO/blob/main/conf%20temp.png?raw=true)
 
+![](https://github.com/Omarcollado23/PRACTICA-8-DHT22-CON-ULTRASONICO/blob/main/conf%20hum.png?raw=true)
 
-![](https://github.com/Omarcollado23/PRACTICA-6-DHT22-CON-NODE-RED/blob/main/conf%20gauge%20tem.png?raw=true)
+![](https://github.com/Omarcollado23/PRACTICA-8-DHT22-CON-ULTRASONICO/blob/main/conf%20dist.png?raw=true)
 
-![](https://github.com/Omarcollado23/PRACTICA-6-DHT22-CON-NODE-RED/blob/main/conf%20guage%20hum.png?raw=true)
-
-![](https://github.com/Omarcollado23/PRACTICA-6-DHT22-CON-NODE-RED/blob/main/conf%20guage%20hum.png?raw=true)
+![](https://github.com/Omarcollado23/PRACTICA-8-DHT22-CON-ULTRASONICO/blob/main/graficos.png?raw=true)
 
 
 ## Resultados
 
 Cuando haya funcionado, la información obtenida del sensor **DHT22** Y **HC-SR04** los mandara a servidor cuando se haga conexión y los observaremos por medio del dashboard. 
 
-Damos Clic en el boton donde dice ```Deploy``` para cargar el programa y despues oprimos la pestaña con una flechita señalnado hacia arriba en diagonal, como se muestra en la imagen. 
+Al final el diagrama nos queda de la siguiente manera:
+
+![](https://github.com/Omarcollado23/PRACTICA-8-DHT22-CON-ULTRASONICO/blob/main/esquema.png?raw=true)
+
+Despues damos Clic en el boton donde dice ```Deploy``` para cargar el programa y despues oprimos la pestaña con una flechita señalnado hacia arriba en diagonal, como se muestra en la imagen. 
 
 ![](https://github.com/Omarcollado23/PRACTICA-7-CON-ULTRASONICO/blob/main/deploy.png?raw=true)
 
 Y veremos los resultados que manda el sensor al servidor como se muestra en la imagen.
 
-![]()
-![]()
+![](https://github.com/Omarcollado23/PRACTICA-8-DHT22-CON-ULTRASONICO/blob/main/result%201.png?raw=true)
 
-
+![](https://github.com/Omarcollado23/PRACTICA-8-DHT22-CON-ULTRASONICO/blob/main/result2.png?raw=true)
 
 # Créditos
 
